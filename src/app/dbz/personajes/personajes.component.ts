@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Producto } from '../interfaces/dbz.interfaces';
+import { DbzService } from '../services/dbz.service';
 //componente hijo
 @Component({
   selector: 'app-personajes',
@@ -7,6 +8,12 @@ import { Producto } from '../interfaces/dbz.interfaces';
 })
 export class PersonajesComponent{
 
-  @Input() productos: Producto[] = []; 
+  get productos (){
+    return this.dbzService.productos;
+  }
+  //@Input() productos: Producto[] = []; 
   //input viene desde el componente padre //herencia?
+  constructor(private dbzService: DbzService){
+    
+  }
 }
